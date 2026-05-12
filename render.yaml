@@ -19,6 +19,12 @@ services:
       - key: MODEL_PATH
         value: ./model/bug_triage_model.pkl
       - key: ALLOWED_ORIGINS
+        value: https://automated-bug-triage.vercel.app,https://automated-bug-triage-api.onrender.com
+      - key: LOG_LEVEL
+        value: INFO
+      - key: MODEL_PATH
+        value: ./model/bug_triage_model.pkl
+      - key: ALLOWED_ORIGINS
         value: https://automated-bug-triage.vercel.app,https://automated-bug-triage-system.onrender.com
       - key: LOG_LEVEL
         value: INFO
