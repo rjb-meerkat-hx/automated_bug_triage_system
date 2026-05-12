@@ -34,10 +34,13 @@ def get_allowed_origins() -> list[str]:
                 "http://localhost:5173",
                 "http://127.0.0.1:5173",
                 "https://automated-bug-triage-system.up.railway.app",
+                "https://automated-bug-triage.vercel.app",
+                "https://automated-bug-triage-system.onrender.com",
             ]
         ),
     )
     return [origin.strip() for origin in allowed_origins.split(",") if origin.strip()]
+
 
 # Lazy-loaded model
 _model = None

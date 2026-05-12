@@ -6,9 +6,10 @@ import { BugHistoryItem } from '@/src/services/api';
 
 interface BugTableProps {
   bugs: BugHistoryItem[];
+  onViewBug?: (bug: BugHistoryItem) => void;
 }
 
-export const BugTable = ({ bugs }: BugTableProps) => {
+export const BugTable = ({ bugs, onViewBug }: BugTableProps) => {
   const getPriorityVariant = (priority: string) => {
     switch (priority.toLowerCase()) {
       case 'high': return 'error';
@@ -98,7 +99,12 @@ export const BugTable = ({ bugs }: BugTableProps) => {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-right">
-                  <button className="p-2 text-slate-400 hover:text-indigo-600 transition-colors">
+                  <button
+                    type="button"
+                    onClick={() => onViewBug?.(bug)}
+                    className="p-2 text-slate-400 hover:text-indigo-600 transition-colors cursor-pointer"
+                    aria-label={`View details for ${bug.title}`}
+                  >
                     <ChevronRight className="h-5 w-5" />
                   </button>
                 </td>

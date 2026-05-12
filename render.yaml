@@ -1,0 +1,24 @@
+services:
+  # Backend API Service
+  - type: web
+    name: automated-bug-triage-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python start_render.py
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./bug_triage.db
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 8000
+      - key: DEBUG
+        value: false
+      - key: MODEL_PATH
+        value: ./model/bug_triage_model.pkl
+      - key: ALLOWED_ORIGINS
+        value: https://automated-bug-triage.vercel.app,https://automated-bug-triage-system.onrender.com
+      - key: LOG_LEVEL
+        value: INFO
